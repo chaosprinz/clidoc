@@ -1,7 +1,10 @@
 import React from 'react'
 import { addKlient } from '@/actions/klient/add'
+import { db } from '@/utils/db'
 
-const KlientCreate = () => {
+const KlientCreate = async () => {
+  const clients = await db.query.clients.findMany()
+
   return (
     <div>
       <form action={addKlient}>
@@ -32,6 +35,14 @@ const KlientCreate = () => {
 
         <button type="submit">Speichern</button>
       </form>
+      <h2 className="mt-4">Klienten</h2>
+      <ul>
+        {clients.map((klient) => (
+          <li key={klient.id}>
+            {klient.vorname} {klient.familienname}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
