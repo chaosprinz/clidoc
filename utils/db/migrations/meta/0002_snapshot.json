@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "fa6beccb-3cfa-4c8d-9ebd-d0e9dd079b2b",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "b280cd9f-f7ee-425a-a9f8-77c12981c136",
+  "prevId": "9d411ccf-87e6-4c00-b654-6e1f4996d60e",
   "tables": {
     "account": {
       "name": "account",
@@ -187,13 +187,6 @@
           "notNull": true,
           "autoincrement": false
         },
-        "password": {
-          "name": "password",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
         "emailVerified": {
           "name": "emailVerified",
           "type": "datetime",
@@ -203,6 +196,21 @@
         },
         "image": {
           "name": "image",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'unapproved'"
+        },
+        "phone": {
+          "name": "phone",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false,

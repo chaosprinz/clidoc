@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "fa6beccb-3cfa-4c8d-9ebd-d0e9dd079b2b",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "9d411ccf-87e6-4c00-b654-6e1f4996d60e",
+  "prevId": "fa6beccb-3cfa-4c8d-9ebd-d0e9dd079b2b",
   "tables": {
     "account": {
       "name": "account",
@@ -182,13 +182,6 @@
         },
         "email": {
           "name": "email",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "password": {
-          "name": "password",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
