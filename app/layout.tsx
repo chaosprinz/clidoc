@@ -26,18 +26,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const session = await auth()
-
-  if (!session?.user) {
-    return (
-      <html>
-        <body>
-          <div>Not logged in</div>
-        </body>
-      </html>
-    )
-  }
-
   return (
     <html lang="en">
       <body
@@ -48,7 +36,6 @@ export default async function RootLayout({
             <ThemeSwitch />
           </div>
 
-          <header>{session?.user.email}</header>
           {children}
         </Providers>
       </body>

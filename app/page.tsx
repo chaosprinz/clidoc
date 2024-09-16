@@ -1,3 +1,7 @@
+import { auth } from '@/utils/auth'
+
 export default async function Home() {
-  return <div>Hallo</div>
+  const session = await auth()
+  console.log('session', session)
+  return <div>Bubu</div>
 }
