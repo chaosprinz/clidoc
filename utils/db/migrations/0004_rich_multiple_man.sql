@@ -1,0 +1,1 @@
+ALTER TABLE `user` MODIFY COLUMN `roles` json NOT NULL DEFAULT ('["mitarbeiter"]');

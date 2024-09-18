@@ -3,6 +3,7 @@ import { db } from './db'
 import { Adapter } from 'next-auth/adapters'
 import NextAuth from 'next-auth'
 import Nodemailer from 'next-auth/providers/nodemailer'
+import { Session } from 'next-auth'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: 'database' },
@@ -31,13 +32,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: userData.id,
           email: userData.email,
           name: userData.name || '',
-          role: userData.role,
+          roles: userData.roles,
           phone: userData.phone || '',
           image: userData.image || '',
           emailVerified: userData.emailVerified || null,
+          approved: userData.approved,
         }
       }
       return session
     },
   },
 })
+
+/**
+ * Checks if the user of a given session is an admin.
+ *
+ * @param session The session to check
+ * @returns true if the session has the 'admin' role, false otherwise
+ */
+export function isAdmin(session: Session) {
+  return session.user.roles.includes('admin')
+}
+
+/**
+ * Checks if the user of a given session is approved.
+ *
+ * @param session The session to check
+ * @returns true if the session is approved, false otherwise
+ */
+export function isApproved(session: Session) {
+  return session.user.approved
+}

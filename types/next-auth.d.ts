@@ -6,8 +6,10 @@ declare module 'next-auth' {
       id: string
       email: string
       name: string
-      role: string
+      roles: string[]
+      phone: string | null
       image: string
+      approved: boolean
     }
   }
 
@@ -15,8 +17,9 @@ declare module 'next-auth' {
     id: string
     email: string
     name: string
-    role: string
-    phone: string
+    roles: string[]
+    phone: string | null
     image: string
+    approved: boolean
   }
 }

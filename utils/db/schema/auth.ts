@@ -1,3 +1,4 @@
+import { relations } from 'drizzle-orm'
 import {
   mysqlTable,
   varchar,
@@ -5,10 +6,10 @@ import {
   datetime,
   int,
   primaryKey,
+  json,
+  boolean,
 } from 'drizzle-orm/mysql-core'
 import { AdapterAccount } from 'next-auth/adapters'
-
-export type Role = 'unapproved' | 'approved' | 'admin'
 
 export const users = mysqlTable('user', {
   id: varchar('id', { length: 255 })
@@ -19,8 +20,9 @@ export const users = mysqlTable('user', {
   email: varchar('email', { length: 255 }).unique().notNull(),
   emailVerified: datetime('emailVerified', { mode: 'date' }),
   image: varchar('image', { length: 255 }),
-  role: varchar('role', { length: 255 }).notNull().default('unapproved'),
   phone: varchar('phone', { length: 255 }),
+  roles: json('roles').$type<string[]>().notNull().default(['mitarbeiter']),
+  approved: boolean('approved').notNull().default(false),
 })
 
 export type User = typeof users.$inferSelect
